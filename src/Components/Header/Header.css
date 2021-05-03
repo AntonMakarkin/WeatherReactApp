@@ -1,0 +1,115 @@
+header {
+    width: 100%;
+    background-color: transparent;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.container-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo h1 {
+    font-size: 25px;
+    color: #fff;
+}
+
+.findCity {
+    border: none;
+    font-size: 20px;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.find {
+    height: 100%;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+
+.find::placeholder {
+    color: #fff;
+    padding-top: 10px;
+}
+
+.SearchBtn {
+    display: block;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    height: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .2s ease-in-out
+}
+
+.SearchBtn:hover {
+    background: lightblue;
+    border: 1px solid lightblue;
+    color: #000;
+}
+
+.activities {
+    display: flex;
+    justify-content: space-between;
+}
+
+.myPosition {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+    transition: background .2s ease-in-out
+}
+
+.myPosition:hover {
+    background: lightblue
+}
+
+.restart {
+    border-radius: 5px;
+    margin-left: 20px;
+    cursor: pointer;
+    padding: 5px;
+    transition: background .2s ease-in-out
+}
+
+.restart:hover {
+    background: lightblue
+}
+
+.favourite {
+    border-radius: 5px;
+    margin-left: 20px;
+    cursor: pointer;
+    padding: 5px;
+    transition: background .2s ease-in-out
+}
+
+.favourite:hover {
+    background: lightblue
+}
+
+.menuIcon {
+    position: absolute;
+    right: 50px;
+    width: 30px;
+    height: 2px;
+    background: #fff;
+}
+
+.menuIcon::before {
+    content: '';
+    display: block;
+    position: relative;
+    margin-top: -7px;
+    width: 50px;
+    background: #fff;
+}

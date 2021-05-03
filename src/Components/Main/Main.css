@@ -1,0 +1,12 @@
+main {
+    padding-top: 80px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-main {
+    flex-direction: column;
+}

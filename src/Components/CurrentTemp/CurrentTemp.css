@@ -1,0 +1,50 @@
+.currentTemp {
+    width: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-right: 1px solid #fff;
+}
+
+.weather {
+    width: 50%;
+    text-align: center;
+}
+
+.weatherIcon {
+    width: 150px;
+    height: 150px;
+}
+
+.temperature {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.temperature_value {
+    font-size: 90px;
+}
+
+.description {
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.updatedTime {
+    font-weight: 400;
+    font-size: 10px;
+}
+
+@media (max-width: 1025px) {
+    .currentTemp {
+        width: 100%;
+        border-right: transparent;
+        border-bottom: 1px solid #fff;
+        padding-bottom: 50px;
+        margin-bottom: 30px;
+    }
+}

@@ -1,0 +1,11 @@
+.current_weather {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 1025px) {
+    .current_weather {
+        flex-wrap: wrap;
+    }
+}

@@ -1,0 +1,14 @@
+p {
+    font-weight: 300;
+    font-size: 18px;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.title {
+    margin-bottom: 50px;
+}

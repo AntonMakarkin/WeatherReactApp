@@ -1,9 +1,9 @@
-.weekly_weather > h2 {
+.hourly_weather {
+    margin-bottom: 50px;
+}
+
+.hourly_weather > h2 {
     font-size: 25px;
     font-weight: 300;
     margin-bottom: 10px;
-}
-
-.weekly_weather {
-    margin-bottom: 50px;
 }

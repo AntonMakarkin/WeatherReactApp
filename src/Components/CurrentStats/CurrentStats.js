@@ -22,21 +22,21 @@ const CurrentStats = () => {
                     <p className="desc">Wind</p>
                     <p className="value">{Math.round((data.current.wind_kph) * 0.28)}mps</p>
                 </div>
-                <div className="pressure">
+                <div className="stat_block pressure">
                     <p className="desc">Pressure</p>
                     <p className="value">{Math.round((data.current.pressure_mb) * 0.75)}mm</p> {/*to transform hPa in mm*/}
                 </div>
             </div>
             <div className="second_row">
-                <div className="humidity">
+                <div className="stat_block humidity">
                     <p className="desc">Humidity</p>
                     <p className="value">{Math.round(data.current.humidity)}%</p>
                 </div>
-                <div className="rain">
+                <div className="stat_block rain">
                     <p className="desc">Rain</p>
                     <p className="value">{rainChance}%</p>
                 </div>
-                <div className="visibility">
+                <div className="stat_block visibility">
                     <p className="desc">Visibility</p>
                     <p className="value">{data.current.vis_km}km</p>
                 </div>

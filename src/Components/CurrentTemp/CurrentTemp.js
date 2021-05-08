@@ -1,10 +1,19 @@
 import React, { useContext } from 'react';
-import WeatherIcon from './sun.svg'
+import WeatherIcon from './day.svg'
 import Context from '../../Context'
 import './CurrentTemp.css'
 
 const CurrentTemp = () => {
     const data = useContext(Context)
+
+    let icon = data.current.condition.icon
+    let splittedURL = icon.split('/') 
+    let srcIcon = "http:" + icon
+    let size = '128x128'
+    let dayNight = splittedURL[5]
+    let iconPng = splittedURL[6]
+    let newURL = `//cdn.weatherapi.com/weather/${size}/${dayNight}/${iconPng}`
+
     let date = new Date()
     let hours = date.getHours()
     let minutes = date.getMinutes()
@@ -16,7 +25,7 @@ const CurrentTemp = () => {
     return (
         <div className="currentTemp">
             <div className="weather">
-                <img src={WeatherIcon} className="weatherIcon" alt=""/>
+                <img src={newURL} className="weatherIcon" alt=""/>
             </div>
             <div className="temperature">
                 <p className="temperature_value">{Math.round(data.current.temp_c)}°</p>

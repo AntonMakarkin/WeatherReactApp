@@ -14,7 +14,7 @@ const DayItem = ({ data }) => {
     let dayName = days[day]
 
     return (
-        <a href="#" className="day_item">
+        <div className="day_item">
             <p className="day_name">{dayName}</p>
             <div className="weather_icon">
                 <img src={srcIcon} alt=""/>
@@ -23,7 +23,7 @@ const DayItem = ({ data }) => {
                 <p className="max_temp">{Math.round(data.day.maxtemp_c)}°</p>
                 <p className="min_temp">{Math.round(data.day.mintemp_c)}°</p>
             </div>
-        </a>
+        </div>
     )
 }
 

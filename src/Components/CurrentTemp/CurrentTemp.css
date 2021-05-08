@@ -9,11 +9,8 @@
 .weather {
     width: 50%;
     text-align: center;
-}
-
-.weatherIcon {
-    width: 150px;
-    height: 150px;
+    display: flex;
+    justify-content: center;
 }
 
 .temperature {

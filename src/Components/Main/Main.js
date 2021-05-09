@@ -5,6 +5,7 @@ import WeeklyWeather from '../WeeklyWeather/WeeklyWeather'
 import Context from '../../Context'
 import HourlyWeather from '../HourlyWeather/HourlyWeather'
 import './Main.css'
+import WeatherDetails from '../WeatherDetails/WeatherDetails';
 
 const Main = ({ location }) => {
     let data = useContext(Context)
@@ -12,13 +13,14 @@ const Main = ({ location }) => {
     let date = new Date(data.location.localtime_epoch * 1000).toLocaleDateString('en-US', dateOptions)
 
     return (
-            <main>
+            <main className="animated fadeInUp">
                 <div className="container container-main">
                     <Title location={location}
                            data={date}/>
                     <CurrentWeather/>
                     <HourlyWeather data={data}/>
                     <WeeklyWeather data={data}/>
+                    <WeatherDetails data={data}/>
                 </div>
             </main>
     )

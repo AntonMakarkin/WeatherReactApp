@@ -19,7 +19,7 @@ const useInputValue = (defaultValue = '') => {
 
 }
 
-const Header = ({ onAdd }) => {
+const Header = ({ onAdd, refresh, fetchLocation }) => {
     const input = useInputValue()
 
     const submitHandler = (event) => {
@@ -42,14 +42,11 @@ const Header = ({ onAdd }) => {
                     <input type="submit" value="Search" className="SearchBtn"></input>
                 </form>
                 <div className="activities">
-                    <div title="Find my location" className="myPosition">
+                    <div title="Find my location" className="myPosition" onClick={fetchLocation}>
                         <MapSVG width="20px" height="20px" fill="#fff"/>
                     </div>
-                    <div title="Refresh the page" className="restart">
+                    <div title="Refresh the page" className="restart" onClick={refresh}>
                         <ReloadSVG width="20px" height="20px" fill="#fff"/>
-                    </div>
-                    <div title="Add to favorites" className="favourite">
-                        <Star width="20px" height="20px" fill="#fff"/>
                     </div>
                     <div className="nightMode"></div>
                 </div>

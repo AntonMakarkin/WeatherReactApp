@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Components/Header/Header'
 import Main from './Components/Main/Main'
+import Footer from './Components/Footer/Footer'
 import Loader from './Components/Loader/Loader'
 import Error from './Components/Error/Error'
 import Context from './Context'
@@ -18,7 +19,47 @@ const App = () => {
         setCity(city)
     }
 
+    const getLocation = () => {
+        try {
+            navigator.geolocation.getCurrentPosition((position) => {
+                let latitude = position.coords.latitude;
+                let longitude = position.coords.longitude;
 
+                setTimeout(() => console.log(latitude, longitude), 1000)
+
+            })
+        } catch(e) {
+            console.log(e)
+        }
+    }
+
+    const fetchLocation = () => {
+        const coords = getLocation()
+        console.log(coords)
+    }
+
+    const fetchWeather = async (apiString) => {
+        const fetchByLocation = apiString 
+        await fetch(fetchByLocation)
+            .then(response => response.json())
+            .then(data => {
+                setData(data)
+                setLoading(false)
+            })
+            .catch(error => {
+                setLoading(false)
+                setError(true)
+                console.log(error)
+        })
+    } 
+
+    const refreshData = () => {
+        const fetchByLocation = `http://api.weatherapi.com/v1/forecast.json?key=33291c825fe24b35a93173152210205&q=${city}&days=5&aqi=no&alerts=no`
+
+        setData([])
+        setLoading(true)
+        fetchWeather(fetchByLocation)
+    }
 
     useEffect(() => {
         /*try {
@@ -51,36 +92,23 @@ const App = () => {
 
         setData([])
         setLoading(true)
-        const fetchWeather = async () => {
-            await fetch(fetchByLocation)
-                .then(response => response.json())
-                .then(data => {
-                    setData(data)
-                    setLoading(false)
-                })
-                .catch(error => {
-                    setLoading(false)
-                    setError(true)
-                    console.log(error)
-                })
-            }
-       
-        //fetchLocation()
-        fetchWeather()
+        fetchWeather(fetchByLocation)
         
     }, [city, error])
 
     return (
         <Context.Provider value={data}>
-                <Header onAdd={setCityFromInput}/>
-
-                {/*loading && <Loader/>*/}
-
+                <Header onAdd={setCityFromInput}
+                        refresh={refreshData}
+                        fetchLocation={fetchLocation}/>
+                <>
                 {(typeof data.current != 'undefined') ? (
                 <Main location={data.location.name}/>
                 ):(
                     loading ? <Loader/> : <Error/>
                 )}
+                </>
+                <Footer/>
         </Context.Provider>   
     )
 }

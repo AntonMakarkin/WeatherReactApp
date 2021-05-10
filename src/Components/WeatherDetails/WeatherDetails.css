@@ -52,3 +52,23 @@
     justify-content: space-between;
     margin-bottom: 15px;
 }
+
+@media (max-width: 901px) {
+    .detail_item {
+        width: 44%;
+    }
+}
+
+@media (max-width: 426px) {
+    .weather_details > h2 {
+        font-size: 20px;
+    }
+    .detail_item {
+        width: 100%;
+        padding-bottom: 0;
+    }
+
+    .day_and_night {
+        padding-bottom: 10px;
+    }
+}

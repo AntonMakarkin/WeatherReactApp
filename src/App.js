@@ -8,8 +8,8 @@ import Context from './Context'
 import './Index.css'
 
 const App = () => {
-    //const [lat, setLat] = useState('') //55.751244
-    //const [long, setLong] = useState('') //37.618423
+    const [lat, setLat] = useState('') //55.751244
+    const [long, setLong] = useState('') //37.618423
     const [data, setData] = useState([])
     const [city, setCity] = useState('Moscow')
     const [loading, setLoading] = useState(true) 
@@ -19,23 +19,47 @@ const App = () => {
         setCity(city)
     }
 
-    const getLocation = () => {
+    const getCoords = async () => {
+        const pos = await new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject)
+        })
+
+        return {
+            long: pos.coords.longitude,
+            lat: pos.coords.latitude
+        }
+    }
+
+    const getLocation = (callback) => {
         try {
             navigator.geolocation.getCurrentPosition((position) => {
-                let latitude = position.coords.latitude;
-                let longitude = position.coords.longitude;
-
-                setTimeout(() => console.log(latitude, longitude), 1000)
-
+                setLat(position.coords.latitude)
+                setLong(position.coords.longitude)
+                //setTimeout(() => callbackFunc, 1000)
             })
+            callback()
         } catch(e) {
             console.log(e)
         }
     }
 
-    const fetchLocation = () => {
-        const coords = getLocation()
-        console.log(coords)
+    const reverseGeocode = async (coords) => {
+        await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${coords.long},${coords.lat}.json?types=place&access_token=pk.eyJ1IjoiYW50b25tYWthcmtpbiIsImEiOiJja20yMWNzNWIyOXRqMm5wbHh2ajgwdG1vIn0.DnpfvcJGfLZyNLTFY96k_Q&limit=1`)
+            .then(response => response.json())
+            .then(data => {
+                setCity(data.features[0].context[0].text)
+                setLoading(false)
+            })
+            .catch(error => {
+                setLoading(false)
+                console.log(error)
+            })
+    }
+
+    const fetchLocation = async () => {
+        setLoading(true)
+        const coords = await getCoords()
+        reverseGeocode(coords)
     }
 
     const fetchWeather = async (apiString) => {
@@ -55,13 +79,15 @@ const App = () => {
 
     const refreshData = () => {
         const fetchByLocation = `http://api.weatherapi.com/v1/forecast.json?key=33291c825fe24b35a93173152210205&q=${city}&days=5&aqi=no&alerts=no`
-
         setData([])
         setLoading(true)
         fetchWeather(fetchByLocation)
     }
 
     useEffect(() => {
+        //const coords = getCoords()
+        //reverseGeocode(coords)
+        //fetchLocationWeather()
         /*try {
             navigator.geolocation.getCurrentPosition((position) => {
                 setLat(position.coords.latitude);

@@ -27,15 +27,15 @@ const HourlyWeather = ({ data }) => {
 
     // breakpoints for adaptive carousel
     const breakpoints = [
-        {width: 600, itemsToShow: 3},
-        {width: 900, itemsToShow: 5},
+        {width: 1, itemsToShow: 3},
+        {width: 600, itemsToShow: 5},
         {width: 1000, itemsToShow: 10}
     ]
 
     return (
         <div className="hourly_weather">
             <h2>24 hour forecast</h2>
-            <Carousel showArrows={false}
+            <Carousel showArrows={false} 
                       pagination={false}
                       breakPoints={breakpoints}
                       className="carousel">

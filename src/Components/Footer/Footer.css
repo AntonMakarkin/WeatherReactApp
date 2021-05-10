@@ -4,3 +4,9 @@ footer {
     padding-bottom: 30px;
     text-align: center;
 }
+
+@media(max-width:501px) {
+    footer p {
+        font-size: 13px;
+    }
+}

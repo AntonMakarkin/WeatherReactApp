@@ -45,3 +45,17 @@
         margin-bottom: 30px;
     }
 }
+
+@media (max-width: 426px) {
+    .temperature_value {
+        font-size: 70px;
+    }
+
+    .title h2 {
+        font-size: 25px;
+    }
+
+    .title p {
+        font-size: 15px;
+    }
+}

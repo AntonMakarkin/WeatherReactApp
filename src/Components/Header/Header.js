@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { ReactComponent as MapSVG } from './maps-and-flags.svg'
 import { ReactComponent as ReloadSVG } from './reload.svg'
-import { ReactComponent as Star} from './star.svg'
 import Context from '../../Context'
 import './Header.css'
 

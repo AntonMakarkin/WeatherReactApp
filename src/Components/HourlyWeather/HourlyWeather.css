@@ -7,3 +7,13 @@
     font-weight: 300;
     margin-bottom: 10px;
 }
+
+@media(max-width: 501px) {
+    .hourly_weather > h2 {
+        font-size: 20px;
+    }
+
+    .time, .degrees {
+        font-size: 15px;
+    }
+}

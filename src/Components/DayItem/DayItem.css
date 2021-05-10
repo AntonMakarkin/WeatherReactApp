@@ -36,3 +36,17 @@
 .min_temp {
     opacity: 0.5;
 }
+
+@media (max-width:426px) {
+    .weather_icon {
+        width: 25%;
+    }
+    .weather_icon img {
+        width: 55px;
+        height: 55px;
+    }
+
+    .day_name {
+        font-size: 15px;
+    }
+}

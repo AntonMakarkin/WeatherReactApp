@@ -7,3 +7,9 @@
 .weekly_weather {
     margin-bottom: 50px;
 }
+
+@media(max-width: 501px) {
+    .max_temp, .min_temp {
+        font-size: 15px;
+    }
+}

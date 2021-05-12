@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import WeatherIcon from './day.svg'
 import Context from '../../Context'
 import './CurrentTemp.css'
 
@@ -8,7 +7,6 @@ const CurrentTemp = () => {
 
     let icon = data.current.condition.icon
     let splittedURL = icon.split('/') 
-    let srcIcon = "http:" + icon
     let size = '128x128'
     let dayNight = splittedURL[5]
     let iconPng = splittedURL[6]

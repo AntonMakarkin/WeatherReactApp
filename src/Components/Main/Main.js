@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import Title from '../Title/Title'
+import Footer from '../Footer/Footer'
 import CurrentWeather from '../CurrentWeather/CurrentWeather'
 import WeeklyWeather from '../WeeklyWeather/WeeklyWeather'
 import Context from '../../Context'
@@ -13,6 +14,7 @@ const Main = ({ location }) => {
     let date = new Date(data.location.localtime_epoch * 1000).toLocaleDateString('en-US', dateOptions)
 
     return (
+        <>
             <main className="animated fadeInUp">
                 <div className="container container-main">
                     <Title location={location}
@@ -23,6 +25,8 @@ const Main = ({ location }) => {
                     <WeatherDetails data={data}/>
                 </div>
             </main>
+            <Footer/>
+        </>
     )
 }
 

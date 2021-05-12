@@ -3,7 +3,6 @@ header {
     background-color: transparent;
     padding-top: 10px;
     padding-bottom: 10px;
-    display: none;
 }
 
 .container-header {
@@ -63,54 +62,100 @@ header {
     justify-content: space-between;
 }
 
-.myPosition {
+.headerIcon {
     cursor: pointer;
     border-radius: 5px;
     padding: 5px;
-    transition: background .2s ease-in-out
-}
-
-.myPosition:hover {
-    background: lightblue
-}
-
-.restart {
-    border-radius: 5px;
     margin-left: 20px;
-    cursor: pointer;
-    padding: 5px;
     transition: background .2s ease-in-out
 }
 
-.restart:hover {
+.headerIcon:hover {
     background: lightblue
 }
 
-.favourite {
-    border-radius: 5px;
-    margin-left: 20px;
-    cursor: pointer;
-    padding: 5px;
-    transition: background .2s ease-in-out
-}
-
-.favourite:hover {
-    background: lightblue
-}
-
-.menuIcon {
+.menu_button {
     position: absolute;
-    right: 50px;
-    width: 30px;
-    height: 2px;
-    background: #fff;
+    top: 32px;
+    right: 28px;
+    width: 18px;
+    background-color: #fff
 }
 
-.menuIcon::before {
+.menu_button:before {
     content: '';
     display: block;
-    position: relative;
-    margin-top: -7px;
-    width: 50px;
-    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 2px;
+    margin-top: -5px;
+    background-color: #fff;
+    transition: transform .2s;
+    transform: rotate(45deg);
+    margin-top: 0;
+}
+
+.menu_button:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 2px;
+    margin-top: -5px;
+    background-color: #fff;
+    transition: transform .2s;
+    transform: rotate(-45deg);
+    margin-top: 0;
+}
+
+.mobileSearch {
+    padding-top: 10px;
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%);
+    z-index: 2;
+    transition: transform .5s
+    cubic-bezier(0, .52, 0, 1);
+}
+
+.findCityMobile {
+    width: 100%;
+    height: 34px;
+    border: none;
+    font-size: 20px;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.searchForm p {
+    text-align: center;
+    font-size: 10px;
+}
+
+.hide {
+    transform: translate3d(-100vw, 0, 0)
+}
+
+.show {
+    transform: translate3d(0vw, 0, 0);
+    overflow: hidden
+}
+
+@media(max-width:701px) {
+    .findCity {
+        display: none;
+    }
 }

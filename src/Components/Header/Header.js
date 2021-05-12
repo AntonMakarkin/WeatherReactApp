@@ -1,7 +1,7 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ReactComponent as MapSVG } from './maps-and-flags.svg'
 import { ReactComponent as ReloadSVG } from './reload.svg'
-import Context from '../../Context'
+import { ReactComponent as SearchSVG } from './search.svg'
 import './Header.css'
 
 const useInputValue = (defaultValue = '') => {
@@ -19,6 +19,25 @@ const useInputValue = (defaultValue = '') => {
 }
 
 const Header = ({ onAdd, refresh, fetchLocation }) => {
+    const [click, setClick] = useState(false),
+          [button, setButton] = useState(false)
+
+    const handleClick = () => setClick(!click),
+          closeMobileMenu = () => setClick(false),
+          showButton = () => {
+              if(window.innerWidth <= 700) {
+                  setButton(true)
+              } else {
+                  setButton(false)
+              }
+          };
+
+    useEffect(() => {
+        showButton();
+    }, []);
+
+    window.addEventListener('resize', showButton);
+
     const input = useInputValue()
 
     const submitHandler = (event) => {
@@ -36,20 +55,32 @@ const Header = ({ onAdd, refresh, fetchLocation }) => {
                 <div className="logo">
                     <h1>Forecast</h1>
                 </div>
-                <form className="findCity" onSubmit={submitHandler}>
-                    <input type="text" className="find" placeholder="Name of location" {...input.bind}/>
+                <form className="findCity" id="cityForm" onSubmit={submitHandler}>
+                    <input type="text" className="find" id="city" placeholder="Name of location" {...input.bind}/>
                     <input type="submit" value="Search" className="SearchBtn"></input>
                 </form>
                 <div className="activities">
-                    <div title="Find my location" className="myPosition" onClick={fetchLocation}>
+                    {button && 
+                        <div className="searchIcon headerIcon" onClick={handleClick}>
+                            <SearchSVG width="20px" height="20px" fill="#fff"/>
+                        </div>
+                    }
+                    <div title="Find my location" className="myPosition headerIcon" onClick={fetchLocation}>
                         <MapSVG width="20px" height="20px" fill="#fff"/>
                     </div>
-                    <div title="Refresh the page" className="restart" onClick={refresh}>
+                    <div title="Refresh the page" className="restart headerIcon" onClick={refresh}>
                         <ReloadSVG width="20px" height="20px" fill="#fff"/>
                     </div>
-                    <div className="nightMode"></div>
                 </div>
-                <div className="menuIcon"></div>
+            </div>
+            <div className={click ? "mobileSearch show" : "mobileSearch hide"}>
+                <div className='searchForm'>
+                    <div className="menu_button" onClick={closeMobileMenu}></div>
+                    <form className="findCityMobile" onSubmit={submitHandler}>
+                        <input type="text" className="find" id="city" placeholder="Name of location" {...input.bind}/>
+                        <input type="submit" value="Search" className="SearchBtn" onClick={closeMobileMenu}></input>
+                    </form>
+                </div>
             </div>
         </header>
     )

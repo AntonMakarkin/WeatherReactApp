@@ -17,16 +17,17 @@ const WeatherDetails = ({ data }) => {
         }
 
         if (modifier === "PM") {
-            hours = parseInt(hours, 10)
+            hours = parseInt(hours, 10) + 12
         }
 
         return `${hours}:${minutes}`
     }
 
-    const sunriseTime = data.forecast.forecastday[0].astro.sunrise
-    const sunsetTime = data.forecast.forecastday[0].astro.sunset
-    const moonriseTime = data.forecast.forecastday[0].astro.moonrise
-    const moonsetTime = data.forecast.forecastday[0].astro.moonset
+    const sunriseTime = converTime12to24(data.forecast.forecastday[0].astro.sunrise)
+    const sunsetTime = converTime12to24(data.forecast.forecastday[0].astro.sunset)
+    const moonriseTime = converTime12to24(data.forecast.forecastday[0].astro.moonrise)
+    const moonsetTime = converTime12to24(data.forecast.forecastday[0].astro.moonset)
+    console.log(sunriseTime, sunsetTime, moonriseTime, moonriseTime)
 
     return (
         <div className="weather_details">
@@ -42,24 +43,24 @@ const WeatherDetails = ({ data }) => {
                     <h3>Sunrise</h3>
                     <div className="sunrise sun_and_moon_time">
                         <img src={sunriseSVG} alt="" />
-                        <p>{converTime12to24(sunriseTime)}</p>
+                        <p>{sunriseTime}</p>
                     </div>
                     <h3>Sunset</h3>
                     <div className="sunset sun_and_moon_time">
                         <img src={sunsetSVG} alt="" />
-                        <p>{converTime12to24(sunsetTime)}</p>
+                        <p>{sunsetTime}</p>
                     </div>
                 </div>
                 <div className="moon detail_item">
                     <h3>Moonrise</h3>
                     <div className="moonrise sun_and_moon_time">
                         <img src={moonriseSVG} alt="" />
-                        <p>{converTime12to24(moonriseTime)}</p>
+                        <p>{moonriseTime}</p>
                     </div>
                     <h3>Moonset</h3>
                     <div className="moonset sun_and_moon_time">
                         <img src={moonsetSVG} alt="" />
-                        <p>{converTime12to24(moonsetTime)}</p>
+                        <p>{moonsetTime}</p>
                     </div>
                 </div>
                 <div className="details detail_item">
